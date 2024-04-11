@@ -2,8 +2,10 @@ from typing import Any
 
 from pydantic import BaseSettings
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
-
+load_dotenv()
 class Config(BaseSettings):
     CORS_ORIGINS: list[str] = ["*"]
     CORS_HEADERS: list[str] = ["*"]
@@ -14,7 +16,7 @@ class Config(BaseSettings):
     MONGOUSER: str = "root"
     MONGOPASSWORD: str = "password"
     MONGODATABASE: str = "fastapi"
-    MONGO_URL: str = "mongodb+srv://admin:8igS2NxJIh7wFsyO@videos.kyq0sck.mongodb.net/?retryWrites=true&w=majority&appName=videos"
+    MONGO_URL: str = os.getenv("MONGO_URL")
 
 
 # environmental variables
